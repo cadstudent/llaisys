@@ -41,13 +41,18 @@ public:
     std::string info() const;
     void debug() const;
 
+    //To do:1-2
     bool isContiguous() const;
 
     // Meta Transform
+    //To do:1-4
     tensor_t permute(const std::vector<size_t> &order) const;
+    //To do:1-5
     tensor_t slice(size_t dim, size_t start, size_t end) const;
+    //To do:1-3
     tensor_t view(const std::vector<size_t> &shape) const;
 
+    //To do:1-1
     // Load data from host memory
     void load(const void *src);
 
