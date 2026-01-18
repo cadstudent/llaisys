@@ -366,12 +366,15 @@ tensor_t Tensor::slice(size_t dim, size_t start, size_t end) const {
 }
 
 void Tensor::load(const void *src_) {
+    std::cout << "load" << std::endl;
     const auto src = reinterpret_cast<const std::byte *>(src_);
+    std::cout << "load src: " << src << std::endl;
     core::context().runtime().api()->memcpy_sync(
         this->data(),
         src,
         this->numel() * this->elementSize(),
         LLAISYS_MEMCPY_H2D);
+    std::cout << "load dst: " << this->data() << std::endl;
 }
 
 tensor_t Tensor::contiguous() const {
