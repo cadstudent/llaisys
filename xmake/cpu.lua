@@ -24,4 +24,7 @@ target("llaisys-ops-cpu")
 
     on_install(function (target) end)
 target_end()
-
+-- Add the qwen2.cc file to the llaisys target
+target("llaisys")
+    add_files("../src/llaisys/*.cc")
+target_end()

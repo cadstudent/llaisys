@@ -30,6 +30,7 @@ __C {
     };
 
     struct LlaisysQwen2Model;
+    struct LlaisysQwen2KVCache;
 
     __export struct LlaisysQwen2Model *llaisysQwen2ModelCreate(const LlaisysQwen2Meta *meta, llaisysDeviceType_t device, int *device_ids, int ndevice);
 
@@ -37,6 +38,12 @@ __C {
 
     __export struct LlaisysQwen2Weights *llaisysQwen2ModelWeights(struct LlaisysQwen2Model * model);
 
-    __export int64_t llaisysQwen2ModelInfer(struct LlaisysQwen2Model * model, int64_t * token_ids, size_t ntoken);
+    __export struct LlaisysQwen2KVCache *llaisysQwen2KVCacheCreate(struct LlaisysQwen2Model * model, size_t max_len);
+
+    __export void llaisysQwen2KVCacheDestroy(struct LlaisysQwen2KVCache * kvcache, size_t max_len);
+
+    __export void llaisysQwen2ModelResetCache(struct LlaisysQwen2Model * model);
+
+    __export int64_t llaisysQwen2ModelInfer(struct LlaisysQwen2Model * model, int64_t *token_ids, size_t ntoken, struct LlaisysQwen2KVCache *kvcache, size_t past_len);
 }
 #endif // LLAISYS_MODELS_QWEN2_H
