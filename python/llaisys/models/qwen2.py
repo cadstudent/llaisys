@@ -229,7 +229,10 @@ class Qwen2:
             LIB_LLAISYS.llaisysQwen2KVCacheDestroy(self.kvcache_ptr)
             self.kvcache_ptr = None
             
+
+            
         # Destroy model instance
         if hasattr(self, "model_ptr") and self.model_ptr:
             LIB_LLAISYS.llaisysQwen2ModelDestroy(self.model_ptr)
             self.model_ptr = None
+
